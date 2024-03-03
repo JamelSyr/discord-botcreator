@@ -1,5 +1,5 @@
 {
-  "name": "bot_token_creator",
+  "name": "discord-botcreator",
   "version": "1.0.0",
   "description": "a package for create discord bots using account tokens",
   "main": "index.js",
