@@ -1,16 +1,15 @@
-<br />
+
+
 <div align="center">
-  <h3 align="center">discordbot-tools</h3>
+
+### discordbot-tools
+
   <p align="center">
 A simple and easy package to create and manage Discord bots using user accounts' tokens and the Discord API    <br />
     <br />
-    <a href="https://github.com/johnathandavis/discordbot-tools/issues/new?labels=bug">Report Bug</a>
-    |
-    <a href="https://github.com/johnathandavis/discordbot-tools/issues/new?labels=enhancement">Request Feature</a>
+    <a href="https://github.com/johnathandavis/discordbot-tools/issues/new?labels=bug">Report Bug</a> |  <a href="https://github.com/johnathandavis/discordbot-tools/issues/new?labels=enhancement">Request Feature</a>
   </p>
-</div>
 
-<div align="center">
   <p>
  <a href="https://github.com/JamelSyr"><img src="https://img.shields.io/static/v1?label=powered%20by&message=Jamil&color=000636&style=for-the-badge&logo=Windows%20Terminal&logoColor=fff"/></a>
  <a href="https://www.npmjs.com/package/discordbot-tools"><img src="https://img.shields.io/npm/v/discordbot-tools.svg?style=for-the-badge" alt="NPM version" /></a>
@@ -22,6 +21,7 @@ A simple and easy package to create and manage Discord bots using user accounts'
 <h2>Installation</h2>
 
 ### Install **[discordbot-tools](https://npmjs.com/package/discordbot-tools)**
+
 ```sh
 npm i discordbot-tools
 ```
@@ -42,6 +42,7 @@ npm i discordbot-tools
 #### At first install the [discordbot-tools](https://npmjs.com/discordbot-tools) package
 
 1. <h4>Create bulk bots using user accounts tokens</h4>
+
 ```js
 const TokenCreateor = require("discordbot-tools");
 (async () => {
@@ -93,6 +94,7 @@ const TokenCreateor = require("discordbot-tools");
 ```
 
 2. <h4>Change and manage a single bot</h4>
+
 ```js
 const TokenCreateor = require("discordbot-tools");
 (async () => {
@@ -124,9 +126,11 @@ const TokenCreateor = require("discordbot-tools");
 ```
 
 ## Documentation
+
 <h4>Note: If you are using the methods without the `start()` method, you need to set the user data using the `setSelectedToken(userData)` method before using the methods! The `userData` object is the user account data that owns the bot you want to manage.</h4>
 
 - `userData` object =>
+
 ```json
 {
     "token": "", // the user account token
@@ -141,12 +145,15 @@ If 2FA is enabled, you can add only the twoFactorKey. <br>
 The 2FA key is the key you get from Discord when you enable 2FA in the user account. <br>
 Example of 2FA key:
  <br><br>
+
 <img src="https://i.imgur.com/6nKiQAl.png" width="400px" height="auto">
+
 </p>
 
 ---
 
 - example of the created bot object =>
+
 ```json
 {
    "token": "botToken",
@@ -186,18 +193,22 @@ Example of 2FA key:
     - `tokenData` the user data object
     
 <h2>Contributing</h2>
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 <h2>License</h2>  
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## 
+## Contact
+
 - Email: <a href="mailto:mojamilchch@gmail.com"> mojamilchch@gmail.com </a>
 - [Instagram - @jamil_syrr](https://www.instagram.com/jamil_syrr/)
 - [Github](https://github.com/JamelSyr)
 - Discord: **6qm**
+
 <br><br>
 
 ## Thank you for using discordbot-tools 🎉
+
 <a href="https://www.buymeacoffee.com/jamill"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jamill&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
