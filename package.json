@@ -1,0 +1,28 @@
+{
+  "name": "bot_token_creator",
+  "version": "1.0.0",
+  "description": "a package for create discord bots using account tokens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord",
+    "tokens",
+    "discord_bots",
+    "bot",
+    "discordTokens",
+    "discord_bot",
+    "bot creator",
+    "discord bot creator"
+  ],
+  "author": "Mohammad Jamil",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "https-proxy-agent": "^7.0.4",
+    "node-fetch": "^2.6.7",
+    "socks-proxy-agent": "^8.0.2",
+    "speakeasy": "^2.0.0"
+  }
+}
