@@ -2,28 +2,28 @@
 
 <div align="center">
 
-### discordbot-tools
+### discordtoken-tool
 
   <p align="center">
 A simple and easy package to create and manage Discord bots using user accounts' tokens and the Discord API    <br />
     <br />
-    <a href="https://github.com/johnathandavis/discordbot-tools/issues/new?labels=bug">Report Bug</a> |  <a href="https://github.com/johnathandavis/discordbot-tools/issues/new?labels=enhancement">Request Feature</a>
+    <a href="https://github.com/johnathandavis/discordtoken-tool/issues/new?labels=bug">Report Bug</a> |  <a href="https://github.com/johnathandavis/discordtoken-tool/issues/new?labels=enhancement">Request Feature</a>
   </p>
 
   <p>
  <a href="https://github.com/JamelSyr"><img src="https://img.shields.io/static/v1?label=powered%20by&message=Jamil&color=000636&style=for-the-badge&logo=Windows%20Terminal&logoColor=fff"/></a>
- <a href="https://www.npmjs.com/package/discordbot-tools"><img src="https://img.shields.io/npm/v/discordbot-tools.svg?style=for-the-badge" alt="NPM version" /></a>
- <a href="https://www.npmjs.com/package/discordbot-tools"><img src="https://img.shields.io/npm/dt/discordbot-tools.svg?maxAge=3600&style=for-the-badge" alt="NPM downloads" /></a>
+ <a href="https://www.npmjs.com/package/discordtoken-tool"><img src="https://img.shields.io/npm/v/discordtoken-tool.svg?style=for-the-badge" alt="NPM version" /></a>
+ <a href="https://www.npmjs.com/package/discordtoken-tool"><img src="https://img.shields.io/npm/dt/discordtoken-tool.svg?maxAge=3600&style=for-the-badge" alt="NPM downloads" /></a>
   </p>
   
 </div>
 
 <h2>Installation</h2>
 
-### Install **[discordbot-tools](https://npmjs.com/package/discordbot-tools)**
+### Install **[discordtoken-tool](https://npmjs.com/package/discordtoken-tool)**
 
 ```sh
-npm i discordbot-tools
+npm i discordtoken-tool
 ```
 
 <h1>Features</h1>
@@ -39,12 +39,12 @@ npm i discordbot-tools
 
 <h2>Getting Started</h2>
 
-#### At first install the [discordbot-tools](https://npmjs.com/discordbot-tools) package
+#### At first install the [discordtoken-tool](https://npmjs.com/discordtoken-tool) package
 
 1. <h4>Create bulk bots using user accounts tokens</h4>
 
 ```js
-const TokenCreateor = require("discordbot-tools");
+const TokenCreateor = require("discordtoken-tool");
 (async () => {
     const creator = new TokenCreateor({
         tokens: [ // the array of the user accounts tokens
@@ -96,7 +96,7 @@ const TokenCreateor = require("discordbot-tools");
 2. <h4>Change and manage a single bot</h4>
 
 ```js
-const TokenCreateor = require("discordbot-tools");
+const TokenCreateor = require("discordtoken-tool");
 (async () => {
     const createor = new TokenCreateor({
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.1 Safari/537.36",
@@ -209,6 +209,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 <br><br>
 
-## Thank you for using discordbot-tools 🎉
-
+## Thank you for using discordtoken-tool 🎉
 <a href="https://www.buymeacoffee.com/jamill"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jamill&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
