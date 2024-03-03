@@ -1,5 +1,5 @@
 {
-  "name": "discord-botcreator",
+  "name": "@jamel_syr/discord-botcreator",
   "version": "1.0.0",
   "description": "A simple and easy package to create and manage Discord bots using user accounts' tokens and the Discord API ",
   "main": "index.js",
@@ -48,8 +48,11 @@
     "discord_bots",
     "bot",
     "discordTokens",
+    "bot_creator",
+    "discord_bot_creator",
+    "bot",
     "discord_bot",
-    "bot creator",
-    "discord bot creator"
+    "bot_token",
+    "token"
   ]
 }

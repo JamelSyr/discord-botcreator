@@ -1,5 +1,3 @@
-<a name="readme-top"></a>
-
 <br />
 <div align="center">
   <h3 align="center">discord-botcreator</h3>
@@ -21,14 +19,14 @@ A simple and easy package to create and manage Discord bots using user accounts'
   
 </div>
 
-## Installation
+<h2>Installation</h2>
 
 ### Install **[discord-botcreator](https://npmjs.com/package/discord-botcreator)**
 ```sh
 npm i discord-botcreator
 ```
 
-# Features
+<h1>Features</h1>
 
 - Simple & easy to use 🎗️
 - Event-based system 📡
@@ -39,15 +37,13 @@ npm i discord-botcreator
 - Save tokens to a file 📁
 - Proxy support 🛡️
 
-## Getting Started
+<h2>Getting Started</h2>
 
 #### At first install the [discord-botcreator](https://npmjs.com/discord-botcreator) package
 
-
-1. #### Create bulk bots using user accounts tokens
+1. <h4>Create bulk bots using user accounts tokens</h4>
 ```js
 const TokenCreateor = require("discord-botcreator");
-
 (async () => {
     const creator = new TokenCreateor({
         tokens: [ // the array of the user accounts tokens
@@ -96,10 +92,9 @@ const TokenCreateor = require("discord-botcreator");
 })();
 ```
 
-2. #### Change and manage a single bot
+2. <h4>Change and manage a single bot</h4>
 ```js
 const TokenCreateor = require("discord-botcreator");
-
 (async () => {
     const createor = new TokenCreateor({
         userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.1 Safari/537.36",
@@ -129,7 +124,7 @@ const TokenCreateor = require("discord-botcreator");
 ```
 
 ## Documentation
-#### Note: If you are using the methods without the `start()` method, you need to set the user data using the `setSelectedToken(userData)` method before using the methods! The `userData` object is the user account data that owns the bot you want to manage.
+<h4>Note: If you are using the methods without the `start()` method, you need to set the user data using the `setSelectedToken(userData)` method before using the methods! The `userData` object is the user account data that owns the bot you want to manage.</h4>
 
 - `userData` object =>
 ```json
@@ -190,13 +185,14 @@ Example of 2FA key:
 - `on("tokenInvalid", tokenData => {})` event - to listen to the token invalid event it will work when the user token is invalid and only work if you are using the start() method
     - `tokenData` the user data object
     
-## Contributing
+<h2>Contributing</h2>
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+<h2>License</h2>  
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Contact
+## 
 - Email: <a href="mailto:mojamilchch@gmail.com"> mojamilchch@gmail.com </a>
 - [Instagram - @jamil_syrr](https://www.instagram.com/jamil_syrr/)
 - [Github](https://github.com/JamelSyr)
@@ -205,5 +201,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Thank you for using discord-botcreator 🎉
 <a href="https://www.buymeacoffee.com/jamill"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=jamill&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-
-<a href="#readme-top">Back To Top</a>
