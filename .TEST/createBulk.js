@@ -1,20 +1,16 @@
-const TokenCreateor = require("../creator");
+const TokenCreateor = require("../src/creator");
 
 (async () => {
     const creator = new TokenCreateor({
         tokens: [
             {
-                token: "OTI4MTgzODUxNzcwMDczMTE4.GiAx0R.NlI94Flt4dhnSffF8YjSL4yvT8oB0nBJm8hXDw",
-                twoFactorKey: "oomznd7ksb2drgad",
+                token: "...",
+                twoFactorKey: "111",
             },
             {
-                token: "OTI4MTI0OTY4MDk1NjA0NzU3.Glm5qu.Pa5dxB8_M21aOXZWfe5bAixWlct-YWem7vFvXE",
-                twoFactorKey: "jtivemwvlmx5gqrv",
-            },
-            {
-                token: "OTI2OTY4MTY1MzM3MDI2NTcw.Gj8BV4.h71ogSMscvsLM5-hFtgqQHO9K7ozUVoV6mhA0M",
+                token: "....",
                 twoFactorKey: "",
-                password: "gMvHjQ44ZSht"
+                password: "111"
             }
         ],
         proxy: "", // the proxy to use - i use ipRoyal proxies

@@ -1,4 +1,4 @@
-const TokenCreateor = require("../creator");
+const TokenCreateor = require("../src/creator");
 
 (async () => {
     const createor = new TokenCreateor({
