@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+coverage/
+.TEST/
+docs/
+
+*.log
+*.txt
+*.md
+*.html
+
+**/*.tmp
+**/*.bak
+**/*.swp

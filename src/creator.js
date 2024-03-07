@@ -11,11 +11,6 @@ const HttpsProxyAgent = require('https-proxy-agent').HttpsProxyAgent
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const generateRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-
-/**
- * @extends EventEmitter
- * @typedef {Object} TokenCreateorOptions
- */
 class TokenCreateor extends EventEmitter {
     /**
      * Discord Bot Token Creator :)
@@ -105,7 +100,7 @@ class TokenCreateor extends EventEmitter {
      * @returns {Object|Response} the response of the request
      * @private
      */
-    async sendRequest(url, options, returnJson = true) {
+    async #sendRequest(url, options, returnJson = true) {
         const res = await fetch(url, options).catch(() => null);
         if (!res) return;
 
@@ -113,7 +108,7 @@ class TokenCreateor extends EventEmitter {
             this.showLogs && console.warn(`[Rate Limit]: waiting for (${this.rateLimit * 2}) Minute`);
             await sleep(1000 * 60 * (this.rateLimit * 2));
             this.rateLimit + 1 > 60 ? this.rateLimit = this.rateLimit / 2 : this.rateLimit++;
-            return await this.sendRequest(url, options, returnJson);
+            return await this.#sendRequest(url, options, returnJson);
         }
         if (res?.status && 403 == res?.status) return 0;
         if (returnJson) return await res.json().catch(() => null);
@@ -125,8 +120,8 @@ class TokenCreateor extends EventEmitter {
      * @returns {Boolean|Object|Response}
      * @private
      */
-    async twoFactorOperation(url, { body, method = "post" }) {
-        var response = await this.sendRequest(url, this.getRequestOptions({ body, method }), false);
+    async #twoFactorOperation(url, { body, method = "post" }) {
+        var response = await this.#sendRequest(url, this.getRequestOptions({ body, method }), false);
         if (!response) return { error: true };
 
         var json = await response.json();
@@ -149,7 +144,7 @@ class TokenCreateor extends EventEmitter {
         const mfaFinishUrl = "https://discord.com/api/v9/mfa/finish";
         const requestOptions = this.getRequestOptions({ body: { data, mfa_type: mfaType, ticket } });
 
-        const lastResponse = await this.sendRequest(mfaFinishUrl, requestOptions, false);
+        const lastResponse = await this.#sendRequest(mfaFinishUrl, requestOptions, false);
         const json2 = await lastResponse.json().catch(() => ({}));
 
         if (json2?.code === 60008 && !isTotp) {
@@ -171,7 +166,7 @@ class TokenCreateor extends EventEmitter {
      * @returns {Promise<String>} the bot token
      */
     async getBotToken(botID) {
-        var { cookie, error, data, skip2Fa } = await this.twoFactorOperation(`https://discord.com/api/v9/applications/${botID}/bot/reset`, {
+        var { cookie, error, data, skip2Fa } = await this.#twoFactorOperation(`https://discord.com/api/v9/applications/${botID}/bot/reset`, {
             body: null,
             method: "post"
         });
@@ -181,7 +176,7 @@ class TokenCreateor extends EventEmitter {
             var reqOptions = this.getRequestOptions({ method: "post" });
             reqOptions.headers["Cookie"] = cookie;
 
-            var json = await this.sendRequest(`https://discord.com/api/v9/applications/${botID}/bot/reset`, reqOptions, true);
+            var json = await this.#sendRequest(`https://discord.com/api/v9/applications/${botID}/bot/reset`, reqOptions, true);
             if (!json || !json?.token) return;
             return json?.token;
         }
@@ -206,7 +201,7 @@ class TokenCreateor extends EventEmitter {
         });
 
         var url = `https://discord.com/api/v9/applications${type == "delete" ? `/${botID}/delete` : type == "get" ? `/${botID}` : ""}`;
-        var res = type != "delete" ? await this.sendRequest(url, reqOptions, type != "delete") : this.twoFactorOperation(url);
+        var res = type != "delete" ? await this.#sendRequest(url, reqOptions, type != "delete") : this.#twoFactorOperation(url, { body: null, method: "post" });
         if (type == "delete" ? res?.error : !res) return;
 
         if (type == "create" && !res?.id) {
@@ -225,7 +220,7 @@ class TokenCreateor extends EventEmitter {
             }
             if (!cookie) return;
             reqOptions.headers["Cookie"] = cookie;
-            res = await this.sendRequest(url, reqOptions, false);
+            res = await this.#sendRequest(url, reqOptions, false);
             if (res?.status == 204) {
                 this.showLogs && console.log(`[Bot Deleted]: ${botID}`);
                 // return this.emit("botDeleted", botID);
@@ -256,7 +251,7 @@ class TokenCreateor extends EventEmitter {
             }, method: "patch"
         });
 
-        let res2 = await this.sendRequest(`https://discord.com/api/v9/applications/${botID}`, reqOptions, false);
+        let res2 = await this.#sendRequest(`https://discord.com/api/v9/applications/${botID}`, reqOptions, false);
         if (res2?.status != 200) {
             this.showLogs && console.warn(`[Warning]: failed to enable intents for bot ${botID}`);
             return false;
@@ -286,8 +281,7 @@ class TokenCreateor extends EventEmitter {
         this.tokenIndex = 0;
         for (var i = 0; i < loopCount; i++) {
             this.selectedUserToken = this?.tokens[this.tokenIndex];
-            console.log(this.selectedUserToken);
-            if (this.tokenIndex + 1 > this.tokens?.length - 1) this.tokenIndex = 0;
+            if ((this.tokenIndex + 1) > (this.tokens?.length - 1)) this.tokenIndex = 0;
             else this.tokenIndex++;
 
             var token = this.selectedUserToken?.token;
@@ -299,13 +293,16 @@ class TokenCreateor extends EventEmitter {
 
             // First: create new application and bot
             const application = await this.performApplicationAction({ type: "create" });
-            if (!application) continue;
+            if (!application) {
+                this.showLogs && console.warn(`[Failed]: failed to create bot with token ${token}`);
+                continue;
+            }
             const { id: botID, name } = application || {};
 
             // bypass discord delete application after creation using request
-            await this.sendScience(botID);
+            await this.#sendScience(botID);
             await this.performApplicationAction({ botID, type: "get" });
-            await this.getSkus(botID);
+            await this.#getSkus(botID);
 
             if (this.options.enableIntents) await this.enableIntents(botID);
 
@@ -329,7 +326,7 @@ class TokenCreateor extends EventEmitter {
             tokens.push(obj);
             this.emit("tokenCreated", obj);
 
-            if (pathToSaveTokens) this.updateFile(obj, pathToSaveTokens);
+            if (pathToSaveTokens) this.#updateFile(obj, pathToSaveTokens);
             this.selectedUserToken = {};
 
             this.showLogs && console.log(`[Success]: created bot ${botID} with token ${botToken}\n\n`);
@@ -341,7 +338,7 @@ class TokenCreateor extends EventEmitter {
     /**
      * @private
      */
-    updateFile(obj, path) {
+    #updateFile(obj, path) {
         var fileData = fs.readFileSync(path, "utf-8");
         if (!fileData) fileData = "[]";
         var data = JSON.parse(fileData);
@@ -360,7 +357,7 @@ class TokenCreateor extends EventEmitter {
      * @param {String} botID 
      * @private
      */
-    sendScience = async (botID) => await fetch(`https://discord.com/api/v9/science`, {
+    #sendScience = async (botID) => await fetch(`https://discord.com/api/v9/science`, {
         ...this.getRequestOptions({
             method: "post",
             body: {
@@ -388,7 +385,7 @@ class TokenCreateor extends EventEmitter {
      * @param {String} botID 
      * @private
      */
-    getSkus = async (botID) => await fetch(`https://discord.com/api/v9/applications/${botID}/skus?localize=false&with_bundled_skus=true`, this.getRequestOptions({ method: "get" })).catch(() => undefined)
+    #getSkus = async (botID) => await fetch(`https://discord.com/api/v9/applications/${botID}/skus?localize=false&with_bundled_skus=true`, this.getRequestOptions({ method: "get" })).catch(() => undefined)
 
 }
 

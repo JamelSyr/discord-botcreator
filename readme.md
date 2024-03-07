@@ -6,8 +6,6 @@
 
   <p align="center">
 A simple and easy package to create and manage Discord bots using user accounts' tokens and the Discord API    <br />
-    <br />
-    <a href="https://github.com/johnathandavis/discordtoken-tool/issues/new?labels=bug">Report Bug</a> |  <a href="https://github.com/johnathandavis/discordtoken-tool/issues/new?labels=enhancement">Request Feature</a>
   </p>
 
   <p>

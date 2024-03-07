@@ -1,6 +1,6 @@
 {
   "name": "discordtoken-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple and easy package to create and manage Discord bots using user accounts' tokens and the Discord API ",
   "main": "index.js",
   "dependencies": {
